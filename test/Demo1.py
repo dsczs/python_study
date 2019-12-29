@@ -2,7 +2,7 @@
 import cv2 as cv
 
 
-# print("hello")
+# print("hello python")
 
 
 cat = cv.imread("cat.jpg")
