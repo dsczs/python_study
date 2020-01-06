@@ -82,5 +82,28 @@ def test_nd_array_iterator():
         print(x, end=',')
 
 
+# 字符串操作
+def test_char():
+    import numpy as np
+    a = np.char.add(['hello'], [' numpy'])
+    print("a = ", a)
+
+    # 两个的时候是第一个的第一个与第二个的第一个拼接
+    b = np.char.add(['hello', 'hello'], [' numpy', ' python'])
+    print("b = ", b)
+
+    # 重复值
+    c = np.char.multiply(' numpy ', 3)
+    print("c = ", c)
+
+    # 首字母大写
+    d = np.char.capitalize('numpy')
+    print("d = ", d)
+
+    # 字符串切割
+    e = np.char.split('i study python', ' ')
+    print("e = ", e)
+
+
 if __name__ == '__main__':
-    test_nd_array_iterator()
+    test_char()
