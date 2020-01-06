@@ -70,5 +70,17 @@ def test_nd_array_4_oper():
     print("f = ", f)
 
 
+# nd array 遍历
+def test_nd_array_iterator():
+    import numpy as np
+
+    arr = np.arange(6).reshape((3, 2))
+    print("原始arr = ", arr)
+
+    print('迭代输出元素：')
+    for x in np.nditer(arr):
+        print(x, end=',')
+
+
 if __name__ == '__main__':
-    test_nd_array_4_oper()
+    test_nd_array_iterator()
