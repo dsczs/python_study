@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pythondemo.AppLog import AppLog
 
 
 def test_class():
@@ -49,5 +50,14 @@ def test_time():
     print("格式化时间为 ", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
 
+# 处理异常
+def test_exception():
+    try:
+        a = 1 / 0
+    except Exception as e:
+        AppLog('pythondemo test1 test_exception').error(e)
+
+
 if __name__ == '__main__':
-    test_time()
+    test_exception()
+
