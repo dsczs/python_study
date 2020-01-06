@@ -39,13 +39,36 @@ def test_ndarray2():
     arr2 = arr.reshape((3, 2))
     print("arr2 = ", arr2)
 
+
 # test ndarray range
-def test_ndarray_range():
+def test_nd_array_range():
     import numpy as np
 
     arr = np.arange(1, 10, 2, int32)
     print("arr = ", arr)
 
 
+# nd array 四则运算
+def test_nd_array_4_oper():
+    import numpy as np
+    # add
+    a = np.array([1, 2, 4])
+    b = np.array([2, 4, 8])
+    c = a + b
+    print("c = ", c)
+
+    # del
+    d = a - b
+    print("d = ", d)
+
+    # mulit 每一行乘以每一列的和累加 例如第一行乘以第一列的和累加 第二行乘以第二列的和累加
+    e = a * b
+    print("e = ", e)
+
+    # divide
+    f = a / b
+    print("f = ", f)
+
+
 if __name__ == '__main__':
-    test_ndarray_range()
+    test_nd_array_4_oper()
