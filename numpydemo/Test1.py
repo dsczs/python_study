@@ -28,7 +28,24 @@ def test_ndarray():
     arr4 = np.array((2, 3))
     print("arr4 = ", arr4)
 
+# ndarray new
+def test_ndarray2():
+    import numpy as np
+
+    arr = np.array([[1, 3, 5], [3, 5, 6]])
+    print("arr = ", arr)
+    print("arr.shape = ", arr.shape)
+
+    arr2 = arr.reshape((3, 2))
+    print("arr2 = ", arr2)
+
+# test ndarray range
+def test_ndarray_range():
+    import numpy as np
+
+    arr = np.arange(1, 10, 2, int32)
+    print("arr = ", arr)
 
 
 if __name__ == '__main__':
-    test_ndarray()
+    test_ndarray_range()
