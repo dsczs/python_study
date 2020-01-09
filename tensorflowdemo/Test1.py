@@ -3,7 +3,7 @@ import tensorflow as tf
 import numpy as np
 
 x_data = np.float32(np.random.randn(2, 100))
-y_data = np.dot([0.150, 0.200], x_data) + 0.300
+y_data = np.dot([0.150, 0.400], x_data) + 0.300
 
 # 构造一个线性模型
 #
