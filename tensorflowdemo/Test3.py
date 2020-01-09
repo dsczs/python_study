@@ -37,5 +37,15 @@ def test_tf_fetch():
         print("result = ", result)
 
 
+# tensorflow feed demo
+def test_tf_feed():
+    a = tf.placeholder(tf.float32)
+    b = tf.placeholder(tf.float32)
+    c = tf.multiply(a, b)
+
+    with tf.Session() as sess:
+        print(sess.run([c], feed_dict={a: [3.0], b: [4.0]}))
+
+
 if __name__ == '__main__':
-    test_tf_fetch()
+    test_tf_feed()
