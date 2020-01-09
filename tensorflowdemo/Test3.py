@@ -23,5 +23,19 @@ def test_tf_variable_1():
             print("add state", sess.run(state))
 
 
+# tensorflow fetch demo
+def test_tf_fetch():
+    a = tf.constant(3.0)
+    b = tf.constant(2.0)
+    c = tf.constant(5.0)
+
+    d = tf.add(a, b)
+    e = tf.multiply(d, c)
+
+    with tf.Session() as sess:
+        result = sess.run([d, e])
+        print("result = ", result)
+
+
 if __name__ == '__main__':
-    test_tf_variable_1()
+    test_tf_fetch()
