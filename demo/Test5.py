@@ -10,9 +10,21 @@ Author: dsczs
 def login():
     from selenium import webdriver
     import time
+    from browsermobproxy import Server
+    from selenium.webdriver.chrome.options import Options
+    import re
+
+    # proxy
+    server = Server(r'D:\FTP\browsermob-proxy-2.1.4-bin\browsermob-proxy-2.1.4\bin\browsermob-proxy.bat')
+    server.start()
+    proxy = server.create_proxy()
+
+    chrome_options = Options()
+    chrome_options.add_argument('--proxy-server={0}'.format(proxy.proxy))
+    proxy.new_har("jd", options={'captureHeaders': True, 'captureContent': True})
 
     # 登录
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(chrome_options=chrome_options)
     browser.get("https://passport.jd.com/common/loginPage?from=media")
     time.sleep(2)
     name = browser.find_element_by_name("loginname")
@@ -38,8 +50,26 @@ def login():
     time.sleep(2)
 
     # 打开推广地址弹窗
-    js = '$("#first_sku_btn").click()'
-    browser.execute_script(js)
+    # js = '$("#first_sku_btn").click()'
+    # browser.execute_script(js)
+
+    result = proxy.har
+    # print(result)
+
+    for entry in result['log']['entries']:
+        print(entry)
+        if "mercury.jd.com/log.gif" in entry['request']['url']:
+            print("###############")
+            # 从头中取cookie
+            header = entry['request']['headers']
+            for h in header:
+                if h['name'] == 'Cookie':
+                    print(h['value'])
+                    my_cookie = h['value']
+                    print("my_cookie ->{}".format(my_cookie))
+
+    # 截屏
+    # browser.get_screenshot_as_file("E:\\jd.png")
 
     time.sleep(11111)
 
