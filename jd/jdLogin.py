@@ -12,7 +12,6 @@ def login():
     import time
     from browsermobproxy import Server
     from selenium.webdriver.chrome.options import Options
-    import re
 
     # proxy
     server = Server(r'D:\FTP\browsermob-proxy-2.1.4-bin\browsermob-proxy-2.1.4\bin\browsermob-proxy.bat')
