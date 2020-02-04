@@ -10,8 +10,10 @@ Author: dsczs
 def login():
     from selenium import webdriver
     import time
+    import random
     from browsermobproxy import Server
     from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.common.action_chains import ActionChains
 
     # proxy
     server = Server(r'D:\FTP\browsermob-proxy-2.1.4-bin\browsermob-proxy-2.1.4\bin\browsermob-proxy.bat')
@@ -20,7 +22,7 @@ def login():
 
     chrome_options = Options()
     # 不加载图片,加快访问速度
-    chrome_options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
+    # chrome_options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
     # 设置为开发者模式，避免被识别
     chrome_options.add_experimental_option('excludeSwitches',
                                     ['enable-automation'])
@@ -31,16 +33,28 @@ def login():
     browser = webdriver.Chrome(chrome_options=chrome_options)
     browser.get("https://login.taobao.com/member/login.jhtml?style=minisimple&from=alimama&redirectURL=http://login.taobao.com/member/taobaoke/login.htm?is_login=1&full_redirect=true&disableQuickLogin=true")
     time.sleep(2)
+
     name = browser.find_element_by_name("TPL_username")
     name.send_keys("小刚和婉庆")
     password = browser.find_element_by_name("TPL_password")
     time.sleep(1)
-    password.send_keys("hadoop123")
+    password.send_keys("")
     login_button = browser.find_element_by_id("J_SubmitStatic")
     login_button.click()
 
+    time.sleep(6)
+    # browser.refresh()
+
+    huakuai = browser.find_element_by_id("nc_1__bg")
+    action = ActionChains(browser)
+
+    action.click_and_hold(huakuai).perform()
+    action.move_by_offset(10, 0).perform()  # 平行移动鼠标
+
+    time.sleep(22)
+    print("滑块完成")
     # 这里必须休眠 需要跳转
-    time.sleep(5)
+    time.sleep(50)
 
     # 打印cookie
     cookie1 = browser.get_cookies()
