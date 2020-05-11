@@ -41,7 +41,7 @@ def server_conenet(client):
 
 
 def server_stop(client):
-    client.loop_stop()  # 停止服务端
+    client.loop_stop()  # 停止服务端 1
     sys.exit(0)
 
 
